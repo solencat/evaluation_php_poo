@@ -25,7 +25,29 @@ class GameRepository
      * @return void
      * @throws \Exception Erreurs SQL
      */
-    public function saveGame(Game $game): void {}
+    public function saveGame(Game $game): void {
+
+        try{
+            // Requête SQL
+            $sql = "INSERT INTO video_game(title, `type`, publish_at, id_console) VALUES (?,?,?,?)";
+
+            // Préparer la requête
+            $stmt = $this->connect->prepare($sql);
+
+            // Bind les valeurs
+            $stmt->bindValue(1,$game->getTitle(), \PDO::PARAM_STR);
+            $stmt->bindValue(2,$game->getType(), \PDO::PARAM_STR);
+            $stmt->bindValue(3,$game->getPublishAt(), \PDO::PARAM_STR);
+            $stmt->bindValue(4,$game->getConsole()->getId(), \PDO::PARAM_STR);
+
+            // Exécuter la requête
+            $stmt->execute();            
+
+        } catch (\PDOException $e){
+            echo "ERREUR PDO: " . $e->getMessage();
+        }
+
+    }
     
     /**
      * Méthode qui retourne la liste des jeux (Game)
