@@ -56,6 +56,28 @@ class GameRepository
      */
     public function findAllGames(): array 
     {
+        try{
+            // Requête
+            $sql = 
+            "SELECT vg.title, vg.type, vg.publish_at, c.name
+            FROM video_game vg
+            INNER JOIN console c ON c.id = vg.id_console";
+
+            // Préparation de la requête
+            $stmt = $this->connect->prepare($sql);
+
+            // Exécuter la requête
+            $stmt->execute();
+
+            // Récupérer les données au format tableau associatif
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        } catch (\PDOException $e){
+            echo "ERREUR PDO: " . $e->getMessage();
+        }
+        
+
+
         return [];
     }
 }
