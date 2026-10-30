@@ -4,7 +4,7 @@ USE games;
 
 CREATE TABLE IF NOT EXISTS console(
     id int AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(50) NOT NULL,
+    `name` VARCHAR(50) NOT NULL UNIQUE,
     manufacturer VARCHAR(50) NOT NULL
 )ENGINE=INNODB;
 
