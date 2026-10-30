@@ -25,6 +25,10 @@
             <select name="console">
                 <option value="" disabled>-- Sélectionner une console --</option>
                 <option value="">-- Sélectionner une console --</option>
+                <option value="PlayStation 5" name="ps5">PlaySation 5 - Sony</option>
+                <option value="Switch" name="switch">Switch - Nintendo</option>
+                <option value="Xbox Series X" name="xbox-sx">Xbox Series X - Microsoft</option>
+                <option value="Steam Deck" name="steam-deck">Steam Deck - Valve</option>
 
                 <!-- Ajouter le count et itérer pour chaque élément -->
             </select>
