@@ -33,9 +33,12 @@ class GameController extends AbstractController
     public function addGame(): mixed 
     {
         $data = [];
-        $consoles = $this->consoleRepository->findAllConsoles();
-        foreach($consoles as $console){
-            $data["consoles"] = $console;
+        if(isset($_POST["submit"])){
+            $consoles = $this->consoleRepository->findAllConsoles();
+            // foreach($consoles as $console){
+            //     $data["consoles"] = $console;
+            // }
+            $data["consoles"] = $consoles;
         }
         return $this->render("add_game", "Ajouter un jeu", $data ?? []);
     }

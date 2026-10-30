@@ -11,8 +11,8 @@ class AbstractController
      * @param array $data Les données à passer au template
      * @return void
      */
-    protected function render(string $template, ?string $title, array $data = []): mixed
+    protected function render(string $template, ?string $title, array $data = []): void
     {
-        return include __DIR__ . "/../../template/template_" . $template . ".php";
+        include __DIR__ . "/../../template/template_" . $template . ".php";
     }
 }
