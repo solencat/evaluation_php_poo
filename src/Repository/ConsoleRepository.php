@@ -25,6 +25,24 @@ class ConsoleRepository
      */
     public function findAllConsoles(): array 
     {
-        return [];
+
+        try{
+            // Création de la requête
+            $sql = "SELECT c.id, c.name, c.manufacturer FROM console c";
+
+            // Préparation de la requête
+            $stmt = $this->connect->prepare($sql);
+
+            // Exécuter la requête
+            $stmt->execute();
+
+            // Récupération des informations au format tableau associatif
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        } catch (\PDOException $e){
+            echo "ERREUR PDO: " . $e->getMessage();
+        }
+
+        return $data ?? [];
     }
 }
