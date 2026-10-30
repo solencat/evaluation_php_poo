@@ -5,13 +5,12 @@ namespace App\Entity;
 class Console
 {
     //Attributs
-    private int $id;
-    private string $name;
-    private string $manufacturer;
+    private ?int $id;
+    private ?string $name;
+    private ?string $manufacturer;
 
     //Constructeur
-    public function __construct(int $id, string $name, string $manufacturer){
-        $this->id = $id;
+    public function __construct(string $name, string $manufacturer){
         $this->name = $name;
         $this->manufacturer = $manufacturer;
     }
