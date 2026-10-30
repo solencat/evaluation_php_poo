@@ -25,14 +25,14 @@
             <select name="console">
                 <option value="" disabled>-- Sélectionner une console --</option>
                 <option value="">-- Sélectionner une console --</option>
-                <option value="1">PlaySation 5 - Sony</option>
-                <option value="2">Switch - Nintendo</option>
-                <option value="3">Xbox Series X - Microsoft</option>
-                <option value="4">Steam Deck - Valve</option>
+                <option value="1" name="ps5">PlaySation 5 - Sony</option>
+                <option value="2" name="switch">Switch - Nintendo</option>
+                <option value="3" name="xbox-sx">Xbox Series X - Microsoft</option>
+                <option value="4" name="steam-deck">Steam Deck - Valve</option>
 
             </select>
 
-            <button type="button" value="Ajouter" name="submit">Envoyer</button>
+            <button type="submit" value="Ajouter" name="submit">Envoyer</button>
 
 
 
