@@ -39,33 +39,59 @@ class GameController extends AbstractController
         $consoles = $this->consoleRepository->findAllConsoles();
 
         // Placer cette liste dans $data['consoles']
-        $data["consoles"] = $consoles;
-        // dd($data);
+        $data["consoles"] = $consoles;        
 
-        // Afficher le template template_add_game.php avec render(), son titre et $data.
-        return $this->render("add_game", "Ajouter un jeu", $data ?? []);
-
+        // Vérifier que le formulaire a été soumis. 
         if(isset($_POST["submit"])){
-
+            
+            // Vérifier que les champs attendus sont tous renseignés : title, type, publish_at et l’identifiant de console. 
             if(
                 !empty($_POST["title"]) &&
                 !empty($_POST["type"]) &&
                 !empty($_POST["publishAt"]) &&
-                !empty($_POST["console"])
+                !empty($_POST["consoles"][0])
             ){
+                
                 // Nettoyage des entrées
                 $titleClean = Tools::sanitize($_POST["title"]);
                 $typeClean = Tools::sanitize($_POST["type"]);
-                $publishAtClean = DateTime::createFromFormat("d-m-Y", Tools::sanitize($_POST["publishAt"]));
-                $consoleClean = Tools::sanitize($_POST["console"]);
+                $publishAtClean = Tools::sanitize($_POST["publishAt"]);
+                $idConsoleClean = Tools::sanitize($_POST["consoles"][0]);
 
                 // Instancier un objet Game
-                // $game = new Game($titleClean, $typeClean, $publishAtClean, $consoleClean);
+                switch ($idConsoleClean){
+                    case 1:
+                        $console = new Console("PlayStation 5", "Sony");
+                        break;
+                    case 2:
+                        $console = new Console("Switch", "Nintendo");
+                        break;
+                    case 3:
+                        $console = new Console("Xbox Series X", "Microsoft");
+                        break;
+                    case 4:
+                        $console = new Console("Steam Deck", "Valve");
+                        break;
+                    default:
+                        $console = new Console("", "");
+                        break;
+                }
+                $game = new Game($titleClean, $typeClean, new DateTime($publishAtClean), $console);
+                dd($game);
+
+                // Appeler la méthode saveGame()
+                $this->gameRepository->saveGame($game);
+                
+                // Renseigner $data['valid'] pour afficher un message de succès lorsque l’enregistrement a réussi.
+                $data["valid"] = "Le jeu a bien été enregistré en base de données!";
 
             } else {
-                echo "Tous les champs doivent être remplis";
+                $data["error"] = "Tous les champs doivent être remplis";
             }
+            dd($data);
         }
+
+        // Afficher le template template_add_game.php avec render(), son titre et $data.
         return $this->render("add_game", "Ajouter un jeu", $data ?? []);
     }
 

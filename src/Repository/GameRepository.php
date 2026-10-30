@@ -41,7 +41,13 @@ class GameRepository
             $stmt->bindValue(4,$game->getConsole()->getId(), \PDO::PARAM_STR);
 
             // Exécuter la requête
-            $stmt->execute();            
+            $stmt->execute();
+
+            // Récupérer le dernier id
+            $id = $this->connect->lastInsertId();
+
+            // Setter l'id
+            $game->setId($id);
 
         } catch (\PDOException $e){
             echo "ERREUR PDO: " . $e->getMessage();
