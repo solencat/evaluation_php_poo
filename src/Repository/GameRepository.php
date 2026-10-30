@@ -82,8 +82,6 @@ class GameRepository
             echo "ERREUR PDO: " . $e->getMessage();
         }
         
-
-
-        return [];
+        return $data ?? [];
     }
 }

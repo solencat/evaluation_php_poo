@@ -14,7 +14,7 @@
     <main class="container">
         <h1>Jeux disponibles:</h1>
         <?php foreach($data["games"] ?? [] as $game) : ?>
-            <p><?= $game->getTitle(), $game->getType(), $game->getPublishAt(), $game->getConsole()->getName()?></p>
+            <p><?= "Titre: " . $game["title"] . ", Type: " . $game["type"] . ", Publiée le: " . $game["publish_at"] . ", Disponible sur: " . $game["name"]?></p>
         <?php endforeach ?>
     </main>
 </body>

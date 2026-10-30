@@ -77,7 +77,7 @@ class GameController extends AbstractController
                         break;
                 }
                 $game = new Game($titleClean, $typeClean, new DateTime($publishAtClean), $console);
-                dd($game);
+                // dd($game);
 
                 // Appeler la méthode saveGame()
                 $this->gameRepository->saveGame($game);
@@ -109,6 +109,7 @@ class GameController extends AbstractController
 
         // Ajouter la liste des jeux à $data['games']. 
         $data["games"] = $games;
+        // dd($data);
 
         // Afficher le template template_show_all_games.php avec render(), son titre et $data. 
 
