@@ -22,20 +22,14 @@
             <label for="publishAt">Date de publication:</label>
             <input type="date" name="publishAt" placeholder="Insérer la date de publication du jeu">
 
-            <select name="console">
+            <select name="consoles[]">
                 <option value="" disabled>-- Sélectionner une console --</option>
-                <option value="">-- Sélectionner une console --</option>
-                <option value="1" name="ps5">PlaySation 5 - Sony</option>
-                <option value="2" name="switch">Switch - Nintendo</option>
-                <option value="3" name="xbox-sx">Xbox Series X - Microsoft</option>
-                <option value="4" name="steam-deck">Steam Deck - Valve</option>
-
-                <!-- Ajouter le count et itérer pour chaque élément -->
+                <?php foreach($data["consoles"] ?? [] as $console):?>
+                    <option value="<?= $console["id"] ?>"><?= $console["name"] ?></option>
+                <?php endforeach ?>
             </select>
 
             <button type="submit" value="Ajouter" name="submit">Envoyer</button>
-
-
 
         </form>
     </main>
