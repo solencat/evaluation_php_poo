@@ -33,7 +33,7 @@
                 <!-- Ajouter le count et itérer pour chaque élément -->
             </select>
 
-            <button type="button" value="Ajouter" name="submit">Envoyer</button>
+            <button type="submit" value="Ajouter" name="submit">Envoyer</button>
 
 
 
