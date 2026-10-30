@@ -20,7 +20,7 @@
             <input type="text" name="type" placeholder="Insérer le type du jeu">
 
             <label for="publishAt">Date de publication:</label>
-            <input type="text" name="publishAt" placeholder="Insérer la date de publication du jeu">
+            <input type="date" name="publishAt" placeholder="Insérer la date de publication du jeu">
 
             <select name="console">
                 <option value="" disabled>-- Sélectionner une console --</option>
