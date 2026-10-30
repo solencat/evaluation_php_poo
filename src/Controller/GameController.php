@@ -32,7 +32,19 @@ class GameController extends AbstractController
      */
     public function addGame(): mixed 
     {
+        // Initialiser un tableau associatif $data vide. 
         $data = [];
+
+        // Récupérer la liste des consoles dans $consoles
+        $consoles = $this->consoleRepository->findAllConsoles();
+
+        // Placer cette liste dans $data['consoles']
+        $data["consoles"] = $consoles;
+        // dd($data);
+
+        // Afficher le template template_add_game.php avec render(), son titre et $data.
+        return $this->render("add_game", "Ajouter un jeu", $data ?? []);
+
         if(isset($_POST["submit"])){
 
             if(
@@ -53,18 +65,6 @@ class GameController extends AbstractController
             } else {
                 echo "Tous les champs doivent être remplis";
             }
-
-
-
-
-
-
-
-            $consoles = $this->consoleRepository->findAllConsoles();
-            // foreach($consoles as $console){
-            //     $data["consoles"] = $console;
-            // }
-            $data["consoles"] = $consoles;
         }
         return $this->render("add_game", "Ajouter un jeu", $data ?? []);
     }
