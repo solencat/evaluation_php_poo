@@ -75,6 +75,17 @@ class GameController extends AbstractController
      */
     public function showAllGames(): mixed 
     {
-        return "template avec la méthode render";
+        // Initialiser un tableau associatif $data vide.
+        $data = [];
+
+        // Récupérer les jeux dans $games
+        $games = $this->gameRepository->findAllGames();
+
+        // Ajouter la liste des jeux à $data['games']. 
+        $data["games"] = $games;
+
+        // Afficher le template template_show_all_games.php avec render(), son titre et $data. 
+
+        return $this->render("show_all_games", "Liste des jeux vidéo", $data ?? []);
     }
 }
