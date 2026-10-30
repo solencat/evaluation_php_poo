@@ -73,11 +73,12 @@ class GameController extends AbstractController
                         $console = new Console("Steam Deck", "Valve");
                         break;
                     default:
-                        $console = new Console("", "");
-                        break;
+                        exit("Error not found");
                 }
                 $game = new Game($titleClean, $typeClean, new DateTime($publishAtClean), $console);
                 // dd($game);
+
+                // [TO-DO]: saveGame() pose problème
 
                 // Appeler la méthode saveGame()
                 $this->gameRepository->saveGame($game);

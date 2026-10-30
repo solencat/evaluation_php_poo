@@ -25,3 +25,9 @@ INSERT INTO console(`name`, manufacturer) VALUES
 	("Xbox Series X", "Microsoft"),
 	("Steam Deck", "Valve");
 	
+-- Décommenter pour débugguage
+-- INSERT INTO video_game(title,`type`,publish_at,id_console) VALUES
+	-- ("GTA 6", "open world",NOW(),1),
+	-- ("AION 2", "MMORPG",NOW(),2),
+	-- ("Path of Exile", "ARPG",NOW(),3),
+	-- ("Path of Exile 2","ARPG",NOW(),3);
